@@ -40,9 +40,9 @@ Proxy to use for connection for connection.
 
 ### Output
 
-Observer hcs module can output everything to console in `json` format or it can create each finding as an issue directly on affected repository.
+Spectator hcs module can output everything to console in `json` format or it can create each finding as an issue directly on affected repository.
 
-![issue]()
+![issue](https://github.com/cucrisis/spectator/blob/master/ref/issue.png?raw=true)
 
 ### Regex file
 The following are supported entries for each regex.
@@ -83,10 +83,10 @@ Sample:
 
 Environment Variables:
 
-OBSERVER_HCS_TOKEN: Git access token
+SPEC_HCS_TOKEN: Git access token
 
-OBSERVER_LOG: Output log file, default to ```config/observer.log```
+SPEC_LOG: Output log file, default to ```config/spectator.log```
 
-OBSERVER_CONFIG: regex file, defaults to ```config/observer.regex.json```
+SPEC_CONFIG: regex file, defaults to ```config/common.regex.json```
 
 
