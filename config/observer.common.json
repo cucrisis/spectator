@@ -1,0 +1,314 @@
+[
+ {
+    "key": "weak-passwords",
+    "title": "Weak passwords",
+    "overview": "Potential weak password found being used hardcoded or in a config",
+    "remediation": "Remove hardcoded password in source code. if its a config change the password to strong password that meets company policy and load it from environment variable when possible",
+
+    "locations":["file"],
+
+    "patterns":[
+       "password", "welcome","passw0rd","pa$$sw0rd", "TargetOrganizationName"
+    ]
+  },
+  {
+    "key": "private-ssh-key",
+    "title": "Private SSH Key Found",
+    "overview": "Potential private SSH Key was found in the repo",
+    "remediation": "Make sure private key are never exported to the repository.",
+
+    "locations":["file"],
+    "extensions":["pem"],
+
+    "patterns":[
+      "BEGIN RSA PRIVATE KEY"
+    ]
+  },
+   {
+    "key": "private-ssh-key",
+    "title": "Private SSH Key Found",
+    "overview": "Potential private SSH Key was found in the repo",
+    "remediation": "Make sure private key are never exported to the repository.",
+
+    "locations":["file"],
+    "extensions":["key"],
+
+    "patterns":[
+      "BEGIN RSA PRIVATE KEY"
+    ]
+  },
+  {
+    "key": "database-connection-string",
+    "title": "Database Connection String",
+    "overview": "Potential database password hardcoded or in configuration",
+    "remediation": "Remove this file from the the repository",
+
+    "locations":["file"],
+    "extensions":["properties"],
+    "patterns":[
+      "jdbc"
+    ]
+  },
+  {
+    "key": "htpassword",
+    "title": ".HTPASSWORD file",
+    "overview": "Potential credentials",
+    "remediation": "Remove this file from the the repository",
+
+    "locations":["path"],
+    "patterns":[
+      "htpasswd"
+    ]
+  },
+   {
+    "key": "gem-credentials-file",
+    "title": "Gem Credentials file",
+    "overview": "Potential credentials file",
+    "remediation": "Remove this file from the the repository",
+
+    "locations":["path"],
+    "patterns":[
+      "gem/credentials"
+    ]
+  },
+   {
+    "key": "secret-key",
+    "title": "Secret Key",
+    "overview": "Potential secret key hardcoded in source code",
+    "remediation": "Load secret_key from env variable.",
+
+    "locations":["file"],
+    "patterns":[
+      "SECRET_KEY","SECRET-KEY","SECRETKEY","SECRETTOKEN","SECRET_TOKEN"
+    ]
+  },
+   {
+    "key": "unsecure-functions",
+    "title": "Banned string copy functions",
+    "overview": "Unsecure string copy function being used",
+    "remediation": "replace the unsecure function with strcpy_s",
+
+    "locations":["file"],
+    "patterns":[
+      "strcpy","strcpyA","strcpyW","wcscpy","_tcscpy","_mbscpy","StrCpyA",
+      "strCpyW","lstrcpy","lstrcpyA","__tccpy","_ftcscpy","strncpy","wcsncpy","_tcsncpy","_mbsncpy","_mbsnbcpy",
+      "StrCpyNA","StrCpyNW","StrNCpy","strcpynA","StrNCpyA","StrNCpyW","lstrcpyn","lstrcpynA","lstrcpynW"
+
+    ]
+  },
+   {
+    "key": "unsecure-functions",
+    "title": " Banned string concatenation functions",
+    "overview": "Unsecure string concatenation function being used",
+    "remediation": "replace the unsecure function with strcat_s",
+
+    "locations":["file"],
+    "patterns":[
+      "strcat","strcatA","strcatW","wcscat","_tcscat","_mbscat","StrCat","StrCatA","StrCatW","lstrcat","lstrcatA",
+      "lstrcatW","StrCatBuff","StrCatBuffA","StrCatBuffW","StrCatChainW","_tccat","_mbccat","_ftcscat","strncat",
+      "wcsncat","_tcsncat","_mbsncat","_mbsnbcat","StrCatN","StrCatNA","StrCatNW","StrNCat","StrNCatA","StrNCatW",
+      "lstrncat","lstrcatnA","lstrcatnW","lstrcatn"
+
+    ]
+  },
+   {
+    "key": "unsecure-functions",
+    "title": "Banned sprintf functions",
+    "overview": "Unsecure string sprintf function being used",
+    "remediation": "replace the unsecure function with sprintf_s",
+
+    "locations":["file"],
+    "patterns":[
+      "sprintfW","sprintfA","wsprintf","wsprintfW","wsprintfA","sprintf","swprintf","_stprintf","wvsprintf",
+      "wvsprintfA","wvsprintfW","vsprintf","_vstprintf","vswprintf","wnsprintfA","wnsprintfW","_snwprintf",
+      "snprintf","sntprintf","_vsnprintf","vsnprintf","_vsnwprintf","_vsntprintf",
+      "wvnsprintf","wvnsprintfA","wvnsprintfW"
+
+    ]
+  },
+   {
+    "key": "unsecure-functions",
+    "title": "Banned n-sprintf functions",
+    "overview": "Unsecure string n-sprintf function being used",
+    "remediation": "replace the unsecure function with _snprintf_s or _snwprintf_s",
+
+    "locations":["file"],
+    "patterns":[
+      "_snwprintf", "_snprintf", "_sntprintf","nsprintf"
+
+    ]
+  },
+   {
+    "key": "unsecure-functions",
+    "title": "Banned variable argument sprintf functions",
+    "overview": "Unsecure string variable argument sprintf function being used",
+    "remediation": "replace the unsecure function with _vstprintf_s",
+
+    "locations":["file"],
+    "patterns":[
+     "wvsprintf","wvsprintfA","wvsprintfW","vsprintf","_vstprintf","vswprintf"
+
+    ]
+  },
+   {
+    "key": "unsecure-functions",
+    "title": "Banned n string copy functions",
+    "overview": "Unsecure n string copy function being used",
+    "remediation": "replace the unsecure function with strncpy_s",
+
+    "locations":["file"],
+    "patterns":[
+     "strncpy","wcsncpy","_tcsncpy","_mbsncpy","_mbsnbcpy","StrCpyN","StrCpyNA","StrCpyNW","StrNCpy","strcpynA",
+      "StrNCpyA","StrNCpyW","lstrcpyn","lstrcpynA","lstrcpynW","_fstrncpy"
+
+    ]
+  },
+   {
+    "key": "unsecure-functions",
+    "title": "Banned n string concatenation functions",
+    "overview": "Unsecure n string concatenation  function being used",
+    "remediation": "replace the unsecure function with strncat_s",
+
+    "locations":["file"],
+    "patterns":[
+     "strncat","wcsncat","_tcsncat","_mbsncat","_mbsnbcat","StrCatN","StrCatNA","StrCatNW","StrNCat","StrNCatA",
+      "StrNCatW","lstrncat","lstrcatnA","lstrcatnW","lstrcatn","_fstrncat"
+
+    ]
+  },
+   {
+    "key": "unsecure-functions",
+    "title": "Banned string tokenizing functions",
+    "overview": "Unsecure string tokenizing function being used",
+    "remediation": "replace the unsecure function with strtok_s",
+
+    "locations":["file"],
+    "patterns":[
+     "strtok","_tcstok","wcstok","_mbstok"
+    ]
+  },
+   {
+    "key": "unsecure-functions",
+    "title": "Banned Makepath functions",
+    "overview": "Unsecure makepath function being used",
+    "remediation": "replace the unsecure function with _makepath_s",
+
+    "locations":["file"],
+    "patterns":[
+     "makepath","_tmakepath","_makepath","_wmakepath"
+    ]
+  },
+   {
+    "key": "unsecure-functions",
+    "title": "Banned Makepath functions",
+    "overview": "Unsecure Splitpath function being used",
+    "remediation": "replace the unsecure function with _splitpath_s",
+
+    "locations":["file"],
+    "patterns":[
+     "makepath","_tmakepath","_makepath","_wmakepath"
+    ]
+  },
+   {
+    "key": "unsecure-functions",
+    "title": "Banned scanf functions",
+    "overview": "Unsecure Splitpath function being used",
+    "remediation": "replace the unsecure function with sscanf_s",
+
+    "locations":["file"],
+    "patterns":[
+     "scanf","wscanf","_tscanf","sscanf","swscanf","_stscanf"
+    ]
+  },
+   {
+    "key": "unsecure-functions",
+    "title": "Banned n-scanf functions",
+    "overview": "Unsecure n-scanf function being used",
+    "remediation": "replace the unsecure function with sscanf_s",
+
+    "locations":["file"],
+    "patterns":[
+     "snscanf","snwscanf","_sntscanf"
+    ]
+  },
+   {
+    "key": "unsecure-functions",
+    "title": "Banned numeric conversion functions",
+    "overview": "Unsecure numeric function being used",
+    "remediation": "replace the unsecure function with _itoa_s, _itow_s",
+
+    "locations":["file"],
+    "patterns":[
+     "_itoa","_itow","_i64toa","_i64tow","_ui64toa","_ui64tot","_ui64tow","_ultoa","_ultot","_ultow"
+    ]
+  },
+   {
+    "key": "unsecure-functions",
+    "title": "Banned get functions",
+    "overview": "Unsecure get function being used",
+    "remediation": "replace the unsecure function with gets_s",
+
+    "locations":["file"],
+    "patterns":[
+     "gets","_getts","_gettws"
+    ]
+  },
+   {
+    "key": "unsecure-functions",
+    "title": "Banned IsBad* functions",
+    "overview": "Unsecure IsBad* function being used",
+    "remediation": "These functions can mask errors, and there are no replacement functions. You should rewrite the code to avoid using these functions. If you need to avoid a crash, wrap your usage of the pointer with __try/__except. ",
+
+    "locations":["file"],
+    "patterns":[
+     "IsBadWritePtr","IsBadHugeWritePtr","IsBadReadPtr","IsBadHugeReadPtr","IsBadCodePtr","IsBadStringPtr"
+    ]
+  },
+   {
+    "key": "unsecure-functions",
+    "title": "Banned OEM conversion functions",
+    "overview": "Unsecure OEM conversion function being used",
+    "remediation": "replace the unsecure function with WideCharToMultiByte",
+
+    "locations":["file"],
+    "patterns":[
+     "CharToOem","CharToOemA","CharToOemW","OemToChar","OemToCharA","OemToCharW","CharToOemBuffA","CharToOemBuffW"
+    ]
+  },
+   {
+    "key": "unsecure-functions",
+    "title": "Banned stack dynamic memory allocation functions",
+    "overview": "Unsecure OEM conversion function being used",
+    "remediation": "replace the unsecure function with SafeAllocA",
+
+    "locations":["file"],
+    "patterns":[
+     "alloca", "_alloca"
+    ]
+  },
+   {
+    "key": "unsecure-functions",
+    "title": "Banned string length functions",
+    "overview": "Unsecure string length function being used",
+    "remediation": "replace the unsecure function with strnlen_s",
+
+    "locations":["file"],
+    "patterns":[
+     "strlen","wcslen","_mbslen","_mbstrlen","StrLen","lstrlen"
+    ]
+  },
+   {
+    "key": "unsecure-functions",
+    "title": "Banned memory copy functions",
+    "overview": "UnsecureBanned memory copy function being used",
+    "remediation": "replace the unsecure function with memcpy_s, wmemcpy_s",
+
+    "locations":["file"],
+    "patterns":[
+     "memcpy","RtlCopyMemory","CopyMemory","wmemcpy"
+    ]
+  }
+
+
+
+]
