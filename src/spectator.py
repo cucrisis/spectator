@@ -13,11 +13,11 @@ SPEC_REGEX_FILE_PATH = os.getenv('SPECTATOR_CONFIG', '../config/spectator.common
 logging.basicConfig(filename=SPEC_OUTPUT_FILE_PATH, level=logging.INFO)
 
 
-class Observer():
+class Spectator():
     @staticmethod
     def run_console():
         parser.parse()
 
 
 if __name__ == '__main__':
-    Observer.run_console()
+    Spectator.run_console()
