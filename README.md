@@ -36,7 +36,7 @@ Is the github enterprise server.
 
 ### Proxy
 
-Proxy to use for connection for connection.
+Proxy to use for connections.
 
 ### Output
 
