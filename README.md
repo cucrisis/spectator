@@ -32,7 +32,7 @@ using something like `user:cucrisis,org:private-org` will do. Also it can read a
 
 ### Server
 
-Is the github enterprise server, default to out server look in the URL thats it
+Is the github enterprise server.
 
 ### Proxy
 
